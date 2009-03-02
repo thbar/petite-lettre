@@ -1,5 +1,56 @@
-petite-lettre=============
-Description goes here.
+Petite-lettre is a little gem allowing YAML communication between a process and the child it launches.
+
+USAGE
+=====
+
+The parent process launches its child and passes it a message using this kind of code:
+
+  PetiteLettre.call("ruby child_program.rb", { :command => :start_sale, :isbn => "1234567", :price => 12.4 })
+
+The child process read the parent message using this kind of code:
+
+  PetiteLettre.receive do |message|
+	response = {}
+	if message[:command] == :start_sale
+      # do something here
+      raise "Price is too low" if message[:price] < 15.0
+      response[:status] = "OK"
+	  response[:transaction_id] = "1235"
+	else
+	  raise "Unknown command '#{message[:command]}'"
+	end
+	response
+  end
+
+Petite-lettre uses $stdin and $stdout by default, although these can be customized with PetiteLettre.receive(input,output).
+
+MORE USAGE
+==========
+
+Nothing stops you from writing a child process in another language (ie: C#, Java), as long as it knows how to read YAML from $stdin and output YAML on $stdout. Just the same - you can write a parent process in another language.
+
+See petite_lettre.rb for implementation details.
+
+HISTORY
+=======
+
+Petite-lettre is born out of the need to communicate between a MRI/Shoes front-end and a JRuby/Celerity back-end.
+
+I'm pretty sure there is something already available out there to do that kind of things already. I just could not find them in a reasonable amount of time.
+
+If it's the case, please mail me so I can bury petite-lettre for ever.
+
+CREDITS
+=======
+
+I think I got that idea after using CouchDB for a while. I believe CouchDB uses JSON to communicate between its processes.
+
+IDEAS
+=====
+
+* create a C# or Java client
+* allow continuous communication (à la server)
+* throw petite-lettre to the bin if I discover something that does the same thing at the same level of simplicity
 
 COPYRIGHT
 =========

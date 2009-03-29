@@ -6,14 +6,16 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Thibaut Barr\303\250re"]
-  s.date = %q{2009-03-02}
+  s.date = %q{2009-03-29}
   s.description = %q{TODO}
   s.email = %q{thibaut.barrere@gmail.com}
-  s.files = ["README.textile", "VERSION.yml", "lib/petite_lettre.rb", "spec/petite_lettre_spec.rb", "spec/sample_client.rb", "spec/spec_helper.rb"]
+  s.extra_rdoc_files = ["README.textile", "LICENSE"]
+  s.files = ["README.textile", "VERSION.yml", "lib/petite_lettre.rb", "spec/petite_lettre_spec.rb", "spec/sample_client.rb", "spec/spec_helper.rb", "LICENSE"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/thbar/petite-lettre}
   s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
   s.require_paths = ["lib"]
+  s.rubyforge_project = %q{petite-lettre}
   s.rubygems_version = %q{1.3.1}
   s.summary = %q{YAML-based inter-process communication}
 

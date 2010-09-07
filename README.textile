@@ -10,17 +10,17 @@ The parent process launches its child and passes it a message using this kind of
 The child process read the parent message using this kind of code:
 
 <pre><code>PetiteLettre.receive do |message|
-	response = {}
-	if message[:command] == :start_sale
-      # do something here
-      raise "Price is too low" if message[:price] < 15.0
-      response[:status] = "OK"
-	  response[:transaction_id] = "1235"
-	else
-	  raise "Unknown command '#{message[:command]}'"
-	end
-	response
+  response = {}
+  if message[:command] == :start_sale
+    # do something here
+    raise "Price is too low" if message[:price] < 15.0
+    response[:status] = "OK"
+    response[:transaction_id] = "1235"
+  else
+    raise "Unknown command '#{message[:command]}'"
   end
+  response
+end
 </code></pre>
 
 Petite-lettre uses $stdin and $stdout by default, although these can be customized with PetiteLettre.receive(input,output).

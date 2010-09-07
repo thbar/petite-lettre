@@ -4,10 +4,13 @@ h1. USAGE
 
 The parent process launches its child and passes it a message using this kind of code:
 
+<pre><code>
   PetiteLettre.call("ruby child_program.rb", { :command => :start_sale, :isbn => "1234567", :price => 12.4 })
+</code></pre>
 
 The child process read the parent message using this kind of code:
 
+<pre><code>
   PetiteLettre.receive do |message|
 	response = {}
 	if message[:command] == :start_sale
@@ -20,6 +23,7 @@ The child process read the parent message using this kind of code:
 	end
 	response
   end
+</code></pre>
 
 Petite-lettre uses $stdin and $stdout by default, although these can be customized with PetiteLettre.receive(input,output).
 
